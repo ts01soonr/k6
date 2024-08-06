@@ -41,10 +41,17 @@ jobs:
           fi
           k6 run browser.js 
         env:
-          ACT: ${{ env.ACT }}
-          
-      - name: Upload Report
+          ACT: ${{ env.ACT }}          
+      - name: Upload K6 screen
         uses: actions/upload-artifact@v3
         with:
           name: k6-screen
           path: k6.png
+
+      - name: Run API test
+        run: k6 run apiTest.js
+      - name: Upload K6 screen
+        uses: actions/upload-artifact@v3
+        with:
+          name: Report
+          path: apiTestSummaryReport.html

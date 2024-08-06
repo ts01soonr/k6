@@ -63,3 +63,8 @@ jobs:
         with:
           name: k6-screen
           path: screenshots/browserTestScreenshot.png
+
+      - name: Run browser k6 test
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: x/browserTest.js

@@ -3,7 +3,7 @@ on:
   push:
  
 jobs:
-  performance-tests:
+  on-ubuntu-vm:
     runs-on: ubuntu-latest
     env:
       K6_BROWSER_ENABLED: true  
@@ -66,3 +66,18 @@ jobs:
 
       - name: Run lab6 load
         run: k6 run x/thesholds.js
+
+  run-container:
+    runs-on: ubuntu-latest
+    container:
+      image: grafana/k6:latest
+      options: --user root
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run k6 test
+        uses: grafana/run-k6-action@v1
+        with:
+          path: apiLogin.js

@@ -6,8 +6,27 @@ on:
       - '**'
 
 jobs:
-  run-k6-action:
+  run-k6-linux:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup K6
+        uses: grafana/setup-k6-action@v1
+      - name: Run local k6 test
+        uses: grafana/run-k6-action@v1
+        with:
+          path: x/apiTest.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-action-linux
+          path: apiTestSummaryReport.html
+  
+  run-k6-windows:
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,5 +41,9 @@ jobs:
       - name: Upload Report
         uses: actions/upload-artifact@v3
         with:
-          name: k6-action-report
+          name: k6-action-windows
           path: apiTestSummaryReport.html
+      - name: Run local k6 thresholds
+        uses: grafana/run-k6-action@v1
+        with:
+          path: x/thresholds.js

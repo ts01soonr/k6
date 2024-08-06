@@ -6,8 +6,6 @@
         scenarios: {
           ui: {
             executor: 'shared-iterations',
-            vus: 5,
-            iterations: 10,
             options: {
               browser: {
                 type: 'chromium',
@@ -16,11 +14,6 @@
           },
         },
       }
-    export let optionsx = {
-        vus: 5,
-        iterations: 10
-
-    }
 
     export default async function () {
         const page = browser.newPage();

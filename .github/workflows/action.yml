@@ -44,7 +44,12 @@ jobs:
           name: k6-action-windows
           path: apiTestSummaryReport.html
       
-      - name: Run local k6 thresholds
+      - name: Run lab6 thresholds
         uses: grafana/run-k6-action@v1
         with:
-          path: x/thesholds.js
+          path: lab6.js
+      - name: Upload lab6 Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: K6-load-on-lab6
+          path: Lab6_Report.html.html

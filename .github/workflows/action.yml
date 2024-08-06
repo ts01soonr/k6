@@ -18,3 +18,9 @@ jobs:
         uses: grafana/run-k6-action@v1
         with:
           path: x/test.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-action-report
+          path: apiTestSummaryReport.html

@@ -20,7 +20,7 @@
       
         try {
             await page.goto('https://ecommerce-playground.lambdatest.io/index.php?route=account/login');
-            page.screenshot({ path: 'screenshots/browserTestScreenshot.png' });
+            page.screenshot({ path: 'browserTestScreenshot.png' });
    
            page.locator('#input-email').type('lambdatest.Cypress@disposable.com');
            page.locator('#input-password').type('Cypress123!!');

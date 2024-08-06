@@ -1,0 +1,59 @@
+name: K6 Grafana Action
+on:
+  push:
+ 
+jobs:
+  performance-action-2:
+    runs-on: ubuntu-latest
+    env:
+      K6_BROWSER_ENABLED: true
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: Run api k6 test
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: x/apiTest.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-API-report-summary
+          path: apiTestSummaryReport.html
+
+      - name: Run k6 test on Lambda Test
+        uses: grafana/k6-action@v0.3.0
+        with:
+          filename: x/LtTest.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-browser-report-summary
+          path: LTSummaryReport.html
+  
+      - name: Run browser k6 test
+        uses: grafana/k6-action@v0.3.0
+        with:
+         filename: x/browserTest.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-browser-report-summary
+          path: TestSummaryReport.html
+
+
+      - name: Run k6 test on Lambda Test
+        uses: grafana/k6-action@v0.3.0
+        with:
+         filename: x/loginTest.js
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: k6-browser-report-summary
+          path: TestReport.html
+

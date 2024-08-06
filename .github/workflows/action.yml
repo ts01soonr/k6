@@ -1,4 +1,4 @@
-name: k6 Load Test
+name: k6-Actions on Linux-Windows
 
 on:
   push:
@@ -43,7 +43,8 @@ jobs:
         with:
           name: k6-action-windows
           path: apiTestSummaryReport.html
+      
       - name: Run local k6 thresholds
         uses: grafana/run-k6-action@v1
         with:
-          path: x/thresholds.js
+          path: x/thesholds.js

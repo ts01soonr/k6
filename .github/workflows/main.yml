@@ -1,4 +1,4 @@
-name: K6 Performance Tests
+name: apt-get K6 do Performance
 on:
   push:
  
@@ -63,3 +63,6 @@ jobs:
         with:
           name: k6-screen
           path: browserTestScreenshot.png
+
+      - name: Run lab6 load
+        run: k6 run x/thesholds.js

@@ -15,5 +15,5 @@
 
 ![App Screenshot](/report/thresholds.png)
 
-[click here](https://htmlpreview.github.io/?https://lab6-us.workplace.datto.com/filelink/1f-173d5d9-8be16c651a-2)
+[view report ](https://htmlpreview.github.io/?https://lab6-us.workplace.datto.com/filelink/1f-173d5d9-8be16c651a-2){:target="_blank"}
 
